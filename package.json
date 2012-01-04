@@ -1,0 +1,23 @@
+{
+  "author": "Aaron Franks",
+  "name": "wiseau",
+  "description": "Build tool for client-side code",
+  "version": "0.0.1",
+  "repository": {
+    "url": ""
+  },
+  "engines": {
+    "node": "~0.6.4"
+  },
+
+  "bin": {
+    "wiseau": "./bin/cli.js",
+    "wi": "./bin/cli.js"
+  },
+  "main": "./lib/wiseau",
+
+  "dependencies": {
+    "commander": "0.5.1"
+  },
+  "devDependencies": {}
+}
