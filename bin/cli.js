@@ -4,19 +4,19 @@
 var cli = require('commander');
 var Wiseau = require('../lib/wiseau.js');
 
-var defaultConfigFile = 'project.json';
 
 cli.command('init')
    .description('Create a new project')
    .action(function(cmd) {
-       Wiseau.create_project(cli.config || defaultConfigFile);
+       var options = { configFile: cli.config };
+       Wiseau.create_project(options);
    });
 
 cli.command('build')
    .description('Build the output files specified by your wiseau.json file')
    .action(function(cmd) {
-       console.log('BUILDING:', cmd);
-       Wiseau.build(cli.config || defaultConfigFile);
+       var options = { configFile: cli.config };
+       Wiseau.build(options);
    });
 
 cli.command('watch')
