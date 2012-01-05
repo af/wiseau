@@ -29,7 +29,7 @@ Maybe later:
 For convenience, `wiseau` is also aliased as `wi` at the command line.
 
 
-#### An Example project.json File
+#### An Example clientbuild.json File
 
 TODO: use npm package.json "main" attribute for npm dependencies
 {
