@@ -19,5 +19,8 @@
   "dependencies": {
     "commander": "0.5.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "chai": "0.1.6",
+    "mocha": ">=0.8"
+  }
 }

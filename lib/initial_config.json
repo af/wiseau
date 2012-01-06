@@ -1,0 +1,15 @@
+// Wiseau build config file.
+{
+    "sourceDir": "js/src",
+    "outputDir": "js/build",
+
+    "targets": {
+        "app.min.js": {
+            "sourceDir": "js/src/myApp",    // Can override this per target.
+            "dependencies": [
+                "models.js",
+                "app.js"
+            ]
+        }
+    }
+}
