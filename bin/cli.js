@@ -2,6 +2,7 @@
 
 // Use commander.js to set up the command line interface for Wiseau
 var cli = require('commander');
+var colors = require('colors');
 var Wiseau = require('../lib/wiseau.js');
 
 
@@ -9,14 +10,29 @@ cli.command('init')
    .description('Create a new project')
    .action(function(cmd) {
        var options = { configFile: cli.config };
-       Wiseau.create_project(options);
+       try {
+           Wiseau.create_project(options);
+       }
+       catch (err) {
+           console.error('ERROR:'.underline.red, err.message);
+           cli.verbose && console.error('\nFull stack trace:\n', err.stack);
+           process.exit(1);
+       }
    });
 
 cli.command('build')
    .description('Build the output files specified by your wiseau.json file')
    .action(function(cmd) {
        var options = { configFile: cli.config };
-       Wiseau.build(options);
+       try {
+           Wiseau.build(options);
+           console.log('Done!');
+       }
+       catch (err) {
+           console.error('ERROR:'.underline.red, err.message);
+           cli.verbose && console.error('\nFull stack trace:\n', err.stack);
+           process.exit(1);
+       }
    });
 
 cli.command('watch')
@@ -27,4 +43,5 @@ cli.command('watch')
 
 cli.version('0.0.1')
    .option('-c, --config <path>', 'Specify your wiseau.json file manually')
+   .option('-v, --verbose', 'More verbose output (including stack traces on errors)')
    .parse(process.argv);
