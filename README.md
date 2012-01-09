@@ -9,55 +9,57 @@ your project.
 #### Features
 
 * Support for multiple output files
-* Pluggable "engines" for various processing (TODO)
-* Support for http and npm dependencies (TODO)
-* JSHint integration (TODO)
+* Minification via uglify-js
+* (TODO) Support for http and npm dependencies
+* (TODO) JSHint integration
 
 Maybe later:
 
 * Coffeescript support
-* CSS build targets
+* CSS/Stylus build targets
 
 
 #### Command Line Interface
 
-* `wiseau init`  - Create a new project.
-* `wiseau build` - Build the target files specified in your project file.
-* `wiseau watch` - Watch the project's source files for changes, and re-build
-                   automatically when changes are saved (TODO).
+* `wiseau init`  - Start a new project by creating a new clientbuild.json config file.
+* `wiseau build` - Build the target files specified in your config file.
+* `wiseau watch` - (TODO) Watch the project's source files for changes, and re-build
+                   automatically when changes are saved.
 
 For convenience, `wiseau` is also aliased as `wi` at the command line.
 
 
 #### An Example clientbuild.json File
 
-TODO: use npm package.json "main" attribute for npm dependencies
+```
+// Single-line comments can be added to your json config file.
 {
-    "sourceDir": "js/src",
-    "outputDir": "js/build",
+    "sourceDir": "js/src",                  // The relative path to your source code
+    "outputDir": "js/build",                // Where to place the output of the build
 
     "targets": {
         "libs.js": {
-            dependencies: [
-                "http://code.jquery.com/jquery-1.7.1.js",
-                "npm:underscore@1.1.2",
-                "npm:backbone@0.5.3",
+            "sourceDir": "js/src/libs",     // You can override config values per target
+            "dependencies": [
+                "jquery.js",
+                "underscore.js",
+                "backbone.js"
             ]
-        }
-        "app.js": {
-            dependencies: [
+        },
+        "app.js": {                         // You can create as many build targets as you like
+            "minify": false,                // Minification is optional (but enabled by default)
+            "dependencies": [
                 "models.js",
                 "views.js",
-                "main.js",
-            ],
-            minify: false,
-            lint: true
+                "main.js"
+            ]
         }
     }
 }
+```
 
 
-#### Prior Art
+#### Alternatives/Prior Art
 
 * anvil.js
 * Ender
