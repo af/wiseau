@@ -1,11 +1,16 @@
 // Wiseau build config file.
+// See https://github.com/af/wiseau
+// This file must be valid json to work, with the exception that single-line
+// comments (like the one you're reading) are allowed.
 {
+    // Project-wide settings:
     "sourceDir": "js/src",
     "outputDir": "js/build",
 
+    // Build targets (files to be created by Wiseau):
     "targets": {
         "app.min.js": {
-            "sourceDir": "js/src/myApp",    // Can override this per target.
+            "sourceDir": "js/src/myApp",
             "dependencies": [
                 "models.js",
                 "app.js"
